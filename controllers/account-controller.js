@@ -48,6 +48,21 @@ const getAccount = async (req, res) => {
   }
 };
 
+const deleteAllAccounts = async (req, res) => {
+  try {
+    await Account.deleteMany({});
+    return res.json({
+      message: "deleted all users",
+      code: 200,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Server Error",
+      code: 500,
+    });
+  }
+};
+
 const resetAccount = async (req, res) => {
   try {
     const result = await Account.updateMany(
@@ -94,4 +109,10 @@ const getAllAccounts = async (req, res) => {
     });
   }
 };
-export { addAccountsList, getAccount, getAllAccounts, resetAccount };
+export {
+  addAccountsList,
+  getAccount,
+  getAllAccounts,
+  resetAccount,
+  deleteAllAccounts,
+};
