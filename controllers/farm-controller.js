@@ -74,7 +74,7 @@ const addOrUpdateFarm = async (req, res) => {
 const getFarm = async (req, res) => {
   try {
     const { userId } = req.params;
-    const user = await User.findOne({ userId });
+    const user = await Farm.findOne({ userId });
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
