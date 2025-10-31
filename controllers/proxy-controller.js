@@ -59,7 +59,7 @@ const getProxy = async (req, res) => {
     // Tìm 1 proxy có usedCount < 50 và tăng lên 1 ngay lập tức
     const proxy = await Proxy.findOneAndUpdate(
       { usedCount: { $lt: 50 } }, // điều kiện
-      { $inc: { usedCount: 1 } }, // tăng 1
+      { $inc: { usedCount: 20 } }, // tăng 1
       { new: true } // trả về object sau khi update
     );
 
