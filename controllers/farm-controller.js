@@ -111,4 +111,19 @@ const getAllFarms = async (req, res) => {
   }
 };
 
-export { addOrUpdateFarm, getFarm, getAllFarms };
+const deleteAllFarms = async (req, res) => {
+  try {
+    await Farm.deleteMany();
+    return res.json({
+      message: "Deleted all farm trackers",
+      code: 200,
+    });
+  } catch (error) {
+    return res.json({
+      message: "Server Error",
+      code: 500,
+    });
+  }
+};
+
+export { addOrUpdateFarm, getFarm, getAllFarms, deleteAllFarms };
