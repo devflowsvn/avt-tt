@@ -95,5 +95,20 @@ const getFarm = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+const getAllFarms = async (req, res) => {
+  try {
+    const response = await Farm.find();
+    return res.json({
+      response,
+      code: 200,
+    });
+  } catch (error) {
+    return res.json({
+      err: error.message,
+      message: "Server Error",
+      code: 500,
+    });
+  }
+};
 
-export { addOrUpdateFarm, getFarm };
+export { addOrUpdateFarm, getFarm, getAllFarms };
